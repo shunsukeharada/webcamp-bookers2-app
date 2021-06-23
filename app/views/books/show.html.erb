@@ -1,8 +1,9 @@
 <div class="post-body">
-  <%= attachment_image_tag @post_book, :book %>
-  <p>ショップ名：<%= @post_book.title %></p>
-  <p>説明：<%= @post_book.body %></p>
-  <% if @post_image.user == current_user %>
-    <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+  <%= attachment_image_tag @book, :book %>
+  
+  <p>ショップ名：<%= @book.title %></p>
+  <p>説明：<%= @book.body %></p>
+  <% if @book.user == current_user %>
+    <%= link_to "削除", book_path(@book), method: :delete %>
   <% end %>
 </div>

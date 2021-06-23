@@ -1,11 +1,11 @@
-<% @post_books.each do |post_book| %>
+<% @books.each do |book| %>
 <div>
-  <%= link_to post_image_path(post_image.id) do %>
-   <%= attachment_image_tag post_book, :book %>
+  <%= link_to book_path(book.id) do %>
+   <%= attachment_image_tag book, :book %>
   <% end %>
   
-  <p>投稿ユーザー画像：<%= image_tag('#') %></p>
-  <p>Title：<%= post_book.title %></p>
-  <p>Opinion：<%= post_book.body %></p>
+  <p>投稿ユーザー画像：<%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.body %></p>
 </div>
 <% end %>
