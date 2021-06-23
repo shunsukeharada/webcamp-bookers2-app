@@ -1,0 +1,11 @@
+<% @post_books.each do |post_book| %>
+<div>
+  <%= link_to post_image_path(post_image.id) do %>
+   <%= attachment_image_tag post_book, :book %>
+  <% end %>
+  
+  <p>投稿ユーザー画像：<%= image_tag('#') %></p>
+  <p>Title：<%= post_book.title %></p>
+  <p>Opinion：<%= post_book.body %></p>
+</div>
+<% end %>
