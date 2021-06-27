@@ -15,7 +15,7 @@
 </tbody></table>
 
 <div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/edit"></a>
+  <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%= current_user.id %>/edit"></a>
 </div>
       <h2 class="mt-3">New book</h2>
       <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5kX+N5HlkgxxrdNecXoR8odg9na2O56OTY0zFR0PS3pH00rnwcWBHzXcHuv8nWxVmWbe0NuTIloqSKpk+A95lA==">
