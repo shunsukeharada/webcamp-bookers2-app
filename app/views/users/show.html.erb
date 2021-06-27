@@ -13,9 +13,9 @@
 	  <th></th>
   </tr>
 </tbody></table>
-　
+
 <div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_687" href="/users/687/edit"></a>
+  <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/edit"></a>
 </div>
       <h2 class="mt-3">New book</h2>
       <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5kX+N5HlkgxxrdNecXoR8odg9na2O56OTY0zFR0PS3pH00rnwcWBHzXcHuv8nWxVmWbe0NuTIloqSKpk+A95lA==">
@@ -44,6 +44,19 @@
     </tr>
   </thead>
   <tbody>
+    <% @books.each do |book| %>
+    <tr>
+      <td>
+        <a href="/"><img class="attachment user profile_image fallback" src="/no_image.jpg"></a>
+      </td>
+      <td>
+        <p><%= link_to book.title, book_path(book) %></p>
+      </td>
+      <td>
+        <%= book.body %>
+      </td>
+    </tr>
+       <% end %>
   </tbody>
 </table>
     </div>
