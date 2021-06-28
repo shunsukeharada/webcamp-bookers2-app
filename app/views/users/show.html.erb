@@ -1,37 +1,7 @@
+<p id="notice"></p>
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg"><table class="table">
-  <tbody><tr></tr>
-  <tr>
-	  <th>name</th>
-	  <th>aaa</th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th></th>
-  </tr>
-</tbody></table>
-
-<div class="row">
-  <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%= current_user.id %>/edit"></a>
-</div>
-      <h2 class="mt-3">New book</h2>
-      <form action="/books" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="5kX+N5HlkgxxrdNecXoR8odg9na2O56OTY0zFR0PS3pH00rnwcWBHzXcHuv8nWxVmWbe0NuTIloqSKpk+A95lA==">
-  <div class="form-group">
-    <label for="book_title">Title</label>
-    <input class="form-control book_title" type="text" name="book[title]" id="book_title">
-  </div>
-  <div class="form-group">
-    <label for="book_opinion">Opinion</label>
-    <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-  </div>
-  <div class="form-group">
-    <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-  </div>
-</form>
-    </div>
+   <%= render 'books/list' %>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
