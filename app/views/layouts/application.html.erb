@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  
   <head>
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
@@ -38,6 +39,7 @@
   </nav>
     </header>
     <main class="mb-auto">
+      <%= render 'layouts/notification' %>
     <%= yield %>
     </main>
     <footer>
