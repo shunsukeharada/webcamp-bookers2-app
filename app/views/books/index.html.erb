@@ -1,15 +1,8 @@
-<p id="notice"></p>
-<% if @book.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @book.errors.count %> errors prohibited this book from being saved:</h2>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li class="error_message"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+ 
+
 <div class="container px-5 px-sm-0">
+  <%= render 'layouts/error_messages' %>
   <div class="row">
 
 
@@ -30,7 +23,7 @@
     <% @books.each do |book| %>
     <tr>
       <td>
-        <a href="/users/<%= book.id %>"><%= attachment_image_tag @book.user, :profile_image, size: '40x40', format: 'jpeg', fallback: "no_image.jpg" %></a>
+        <a href="/users/<%= book.id %>"><%= attachment_image_tag book.user, :profile_image, size: '40x40', format: 'jpeg', fallback: "no_image.jpg" %></a>
       </td>
       <td>
         <p><%= link_to book.title, book_path(book) %></p>
