@@ -9,7 +9,7 @@
   		    <tr>
   		      <td>
   		                <a href=""><%= attachment_image_tag @book.user, :profile_image, size: '40x40', format: 'jpeg', fallback: "no_image.jpg" %></a>
-  		         <br><%= @book.user.name %><%= link_to @book.user.name, user_path(@book.user) %>
+  		         <br><%= link_to @book.user.name, user_path(@book.user) %>
   		        </a>
   		      </td>
   		      <td>
@@ -18,7 +18,7 @@
   		      <td>
              <p><%= @book.body %></p>
             </td>
-            <% if @book.id == current_user.id %>
+            <% if @book.user_id == current_user.id %>
             <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
             <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger " rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
             <% end %>

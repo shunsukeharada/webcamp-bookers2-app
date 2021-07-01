@@ -1,5 +1,3 @@
-
-
 <div class="col-md-3">
       <h2>User info</h2>
       <%= attachment_image_tag @user, :profile_image, size: '100x100', format: 'jpeg', fallback: "no_image.jpg" %>
@@ -8,11 +6,11 @@
   <tr></tr>
   <tr>
 	  <th>name</th>
-	  <th><%= @book.user.name %></th>
+	  <th><%= @user.name %></th>
   </tr>
   <tr>
 	  <th>introduction</th>
-	  <th><%= @book.user.introduction %></th>
+	  <th><%= @user.introduction %></th>
   </tr>
 </tbody>
 </table>
