@@ -24,8 +24,8 @@
           <% if user_signed_in? %>
           <li><a class="fas fa-home nav-link text-light" href="/users/<%= current_user.id %>">Home</a></li>
           <li><a class="fas fa-users nav-link text-light" href="/users">Users</a></li>
-          <li><a class="fas fa-book-open nav-link text-light" href="/books_path">Books</a></li>
-          <li><a class="fas fa-sign-out-alt nav-link text-light" href="/users/sign_out" method="delete">logout</a></li>
+          <li><a class="fas fa-book-open nav-link text-light" href="/books">Books</a></li>
+          <li><a class="fas fa-sign-out-alt nav-link text-light" href="/users/sign_out" data-method="delete">logout</a></li>
           <% else %>
           <li><a class="fas fa-home nav-link text-light" href="/">Home</a></li>
           <li><a class="fas fa-link nav-link text-light" href="/home/about">About</a></li>
