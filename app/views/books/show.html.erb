@@ -20,24 +20,23 @@
             <% if @book.user_id == current_user.id %>
             <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
             <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger " rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
-            <% else %>
+            <% end %>
             <td>
 <% if @book.favorited_by?(current_user) %>
     <p>
       <%= link_to book_favorites_path(@book), method: :delete do %>
-        ♥<%= @book.favorites.count %>
+        <i class="fas fa-heart"></i><%= @book.favorites.count %>
       <% end %>
     </p>
     <% else %>
     <p>
       <%= link_to book_favorites_path(@book), method: :post do %>
-        ♡<%= @book.favorites.count %>
+        <i class="far fa-heart"></i><%= @book.favorites.count %>
       <% end %>
     </p>
   <% end %>
             </td>
             <td><p>コメント件数：<%= @book.book_comments.count %></p></td>
-            <% end %>
   		    </tr>
   		  </tbody>
       </table>
