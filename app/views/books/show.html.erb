@@ -20,21 +20,44 @@
             <% if @book.user_id == current_user.id %>
             <td><a class="btn btn-sm btn-success" href="/books/<%= @book.id %>/edit">Edit</a></td>
             <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger " rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
+            <% else %>
+            <td>
+<% if @book.favorited_by?(current_user) %>
+    <p>
+      <%= link_to book_favorites_path(@book), method: :delete do %>
+        ♥<%= @book.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to book_favorites_path(@book), method: :post do %>
+        ♡<%= @book.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+            </td>
+            <td><p>コメント件数：<%= @book.book_comments.count %></p></td>
             <% end %>
   		    </tr>
   		  </tbody>
       </table>
 <div class="comments">
- <p>コメント件数：<%= @book.book_comments.count %></p>
+
  <% @book.book_comments.each do |book_comment| %>
-  <%= book_comment.user.name %>
-  <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
+　<td>
+  	<a href=""><%= attachment_image_tag book_comment.user, :profile_image, size: '40x40', format: 'jpeg', fallback: "no_image.jpg" %></a>
+  	<br><%= link_to book_comment.user.name, user_path(book_comment.user) %>
+  	</a>
+  </td>
+  <td>
+    <%= book_comment.comment %>
+  </td>
   <% if book_comment.user == current_user %>
   <div class="comment-delete">
-    <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
+    <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger " %>
   </div>
   <% end %>
-  
+
  <% end %>
 </div>
 <div class="new-comment">
@@ -44,18 +67,6 @@
 <% end %>
 </div>
     </div>
-    <% if @book.favorited_by?(current_user) %>
-    <p>
-      <%= link_to book_favorites_path(@book), method: :delete do %>
-        ♥<%= @book.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to book_favorites_path(@book), method: :post do %>
-        ♡<%= @book.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+
   </div>
 </div>
