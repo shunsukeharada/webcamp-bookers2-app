@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    @message.save
+    unless @message.save
+      flash[:notice] = "140文字以内で送信してください。"
+    end
     redirect_to request.referer
   end
   
