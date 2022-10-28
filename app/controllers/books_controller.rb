@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :check_book_user, only: [:edit, :update, :destroy]
+  impressionist :actions=> [:show, :index]
 
   def create
     @book = Book.new(book_params)
