@@ -7,16 +7,42 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Group Detail</h2>
       <table class='table table-hover table-inverse'>
-        <tr>
-          <td><%= attachment_image_tag @group, :image, size: "50x50", fallback: "no_image.jpg" %></td>
-          <td><%= @group.name %></td>
-          <td><%= @group.introduction %></td>
-          <td>
-            <% if @group.owner_id == current_user.id %>
-              <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-            <% end %>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>メンバー</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @group, :image, size: "50x50", fallback: "no_image.jpg" %></td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td>
+              <% @group.group_users.each do |group_user| %>
+               <p><%= group_user.user.name %></p>
+              <% end %>
+            </td>
+            <td>
+              <% if @group.owner_id == current_user.id %>
+                <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+              <% elsif @group.group_users.where(user_id: current_user.id).present? %>
+                <%= form_with model: @group_user, url: group_user_path(current_user.id), method: :delete, local: true do |f| %>
+                  <%= f.hidden_field :group_id, :value => @group.id %>
+                  <%= f.submit "Leave this group", class: "btn btn-sm btn-danger" %>
+                <% end %>
+              <% else %>
+                <%= form_with model: @group_user, url: group_users_path, local: true do |f| %>
+                  <%= f.hidden_field :group_id, :value => @group.id %>
+                  <%= f.submit "Join this group", class: "btn btn-sm btn-success" %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

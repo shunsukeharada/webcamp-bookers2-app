@@ -10,4 +10,5 @@ Rails.application.routes.draw do
  
  resources :users, only: [:index, :show, :edit, :update]
  resources :groups, except: [:destroy]
+ resources :group_users, only: [:create, :destroy]
 end

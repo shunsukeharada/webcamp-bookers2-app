@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
     @user = current_user
     @new_book = Book.new
     @group = Group.find(params[:id])
+    @group_user = GroupUser.new
   end
   
   def edit
@@ -26,6 +27,9 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
+      @group_user = @group.group_users.new
+      @group_user.user_id = current_user.id
+      @group_user.save
       redirect_to groups_path
     else
       render 'new'
