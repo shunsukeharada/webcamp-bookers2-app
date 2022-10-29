@@ -9,6 +9,11 @@ Rails.application.routes.draw do
  end
  
  resources :users, only: [:index, :show, :edit, :update]
- resources :groups, except: [:destroy]
  resources :group_users, only: [:create, :destroy]
+ 
+ resources :groups, except:[:destroy] do
+    get "join" =>"groups#join"
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
+  end
 end

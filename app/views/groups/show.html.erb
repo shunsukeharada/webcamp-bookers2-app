@@ -29,6 +29,7 @@
             <td>
               <% if @group.owner_id == current_user.id %>
                 <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
+                <%= link_to 'Notice an Event', group_new_mail_path(@group.id), class: "btn btn-sm btn-info" %>
               <% elsif @group.group_users.where(user_id: current_user.id).present? %>
                 <%= form_with model: @group_user, url: group_user_path(current_user.id), method: :delete, local: true do |f| %>
                   <%= f.hidden_field :group_id, :value => @group.id %>
